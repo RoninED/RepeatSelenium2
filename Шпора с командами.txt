@@ -1,0 +1,18 @@
+Клик
+driver.findElement(By.xpath("//SPAN[text()='Prendi un nuovo posto in coda']/self::SPAN")).click();
+       
+Дождатся и кликнуть
+Wait <WebDriver> wait = new WebDriverWait (driver,5,1000);
+WebElement example = driver.findElement(By.xpath("//SPAN[text()='Prendi un nuovo posto in coda']/self::SPAN"));
+wait.until(ExpectedConditions.visibilityOf (example)).click();
+
+
+Метод проверки наличия элемента
+ public boolean checkIfDisplayed(By by) {
+        try {
+            WebElement elem = driver.findElement(by);
+            return elem.isDisplayed();
+        } catch (NoSuchElementException nse) {
+            return false;
+        }
+
