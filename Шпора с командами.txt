@@ -39,6 +39,6 @@ new Actions(driver).moveToElement(driver.findElement(By.xpath("//LI[@class='ds']
 
 =================================================
 =================================================
+<a href="#" onclick="giraPagina ('63954',1); return false;" style="">›</a>
 
-//*[@id="dayOfTheMonth_63954"]/li[16][@title="Posti non disponibili"]
-//*[@title="Posti non disponibili"]
+<li class="next" id="mese_next_63954"><a href="#" onclick="giraPagina ('63954',1); return false;" style="">›</a></li>

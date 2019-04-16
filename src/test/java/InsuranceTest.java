@@ -49,6 +49,7 @@ public class InsuranceTest {
 
     @After
     public void afterTest() {
+        driver.close();
 
     }
 
