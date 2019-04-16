@@ -1,14 +1,19 @@
+=============================================
 Клик
+
 driver.findElement(By.xpath("//SPAN[text()='Prendi un nuovo posto in coda']/self::SPAN")).click();
-       
+
+=============================================       
 Дождатся и кликнуть
+
 Wait <WebDriver> wait = new WebDriverWait (driver,5,1000);
 WebElement example = driver.findElement(By.xpath("//SPAN[text()='Prendi un nuovo posto in coda']/self::SPAN"));
 wait.until(ExpectedConditions.visibilityOf (example)).click();
 
-
+=============================================
 Метод проверки наличия элемента
- public boolean checkIfDisplayed(By by) {
+
+public boolean checkIfDisplayed(By by) {
         try {
             WebElement elem = driver.findElement(by);
             return elem.isDisplayed();
@@ -16,3 +21,24 @@ wait.until(ExpectedConditions.visibilityOf (example)).click();
             return false;
         }
 
+=============================================
+xpath conains
+
+//*[contains(text(), 'MAGGIO')]
+
+================================================
+xpath по параметру
+
+//*/li[16][@title="Posti non disponibili"]
+
+================================================
+фокус на элементе
+
+new Actions(driver).moveToElement(driver.findElement(By.xpath("//LI[@class='ds'][text()='Data selezionata']/self::LI"))).perform();
+            
+
+=================================================
+=================================================
+
+//*[@id="dayOfTheMonth_63954"]/li[16][@title="Posti non disponibili"]
+//*[@title="Posti non disponibili"]

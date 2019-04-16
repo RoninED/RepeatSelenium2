@@ -6,11 +6,13 @@ import org.openqa.selenium.NoSuchElementException;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.ui.ExpectedCondition;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.Wait;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
+import javax.swing.*;
 import java.util.concurrent.TimeUnit;
 
 public class InsuranceTest {
@@ -33,9 +35,20 @@ public class InsuranceTest {
     public void testInsurance() {
         Wait<WebDriver> wait = new WebDriverWait(driver, 5, 1000);
 
+        if (checkIfDisplayed(By.xpath("//SPAN[text()='Prendi un nuovo posto in coda']")))
+            driver.findElement(By.xpath("//SPAN[text()='Prendi un nuovo posto in coda']/self::SPAN")).click();
 
-        if (checkIfDisplayed(By.xpath("//SPAN[text()='1Prendi un nuovo posto in coda']")))
-            System.out.println("1");
+
+        if (!checkIfDisplayed(By.xpath("//*[contains(text(), 'MAGGIO')]"))) {
+            new Actions(driver).moveToElement(driver.findElement(By.xpath("//LI[@class='ds'][text()='Data selezionata']/self::LI"))).perform();
+            driver.findElement(By.xpath("//LI[@id=\"mese_next_63954\"]")).click();
+            driver.findElement(By.xpath("//*/li[16][@title=\"Posti non disponibili\"][contains(text(), '14')]"));
+        }
+    }
+
+
+    @After
+    public void afterTest() {
 
     }
 
@@ -45,14 +58,7 @@ public class InsuranceTest {
             WebElement elem = driver.findElement(by);
             return elem.isDisplayed();
         } catch (NoSuchElementException nse) {
-            System.out.println("2");
             return false;
         }
-    }
-
-
-    @After
-    public void afterTest() {
-
     }
 }
